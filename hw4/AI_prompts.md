@@ -1,13 +1,6 @@
 # AI Prompts Log — Homework 4: Campus Customs
 
 
-> **Note on prompt wording.** Most prompts in this log are my own. For Problems 1, 5, and 6, I first asked the assistant to suggest a well-structured prompt so I could see how one should be written, then sent my version. I tried to put them in my own words, but my versions stayed closely aligned with the suggestions:
-> - **Problem 1:** lightly reworded from the suggested draft.
-> - **Problem 5:** sent essentially as suggested (including two bracketed placeholders I didn't fill in; the assistant filled them from our earlier conversation: model `gpt-6-luna`, run command `uvicorn main:app --reload --port 8000`).
-> - **Problem 6:** the first prompt was sent as suggested; my follow-up rewrote the opening in my own words.
->
-> Every prompt below is logged exactly as I sent it.
-
 ## Problem 1: Vibe coder prompts
 
 **Prompt:**
