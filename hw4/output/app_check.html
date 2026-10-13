@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campus Customs: Application Verification Report</title>
+<style>
+  :root {
+    --navy-900:#0b2545; --navy:#00356b; --blue:#1f5fae; --sky:#e8f0fb; --sky-2:#d4e3f7;
+    --white:#fff; --gray-50:#f5f7fa; --gray-100:#eef1f5; --gray-200:#e2e7ee; --gray-600:#556070; --ink:#14213d;
+    --yellow:#f2c230; --green:#1e5b46; --green-soft:#e3f1ea; --red:#b42318; --red-soft:#fdecea;
+  }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--gray-50); color:var(--ink);
+    font:15px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+  .wrap { max-width:1080px; margin:0 auto; padding:0 20px; }
+  header.top { background:linear-gradient(135deg,var(--navy-900),var(--navy) 60%,var(--blue)); color:#fff; border-bottom:4px solid var(--yellow); }
+  header.top .wrap { padding:34px 20px 30px; }
+  .brand { display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+  .brand b { font:800 italic 20px/1 "Barlow Condensed","Arial Narrow",Arial,sans-serif; letter-spacing:.04em; text-transform:uppercase; }
+  .brand small { display:block; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#b9cbe4; margin-top:3px }
+  h1 { margin:0 0 6px; font:800 34px/1.1 "Barlow Condensed","Arial Narrow",Arial,sans-serif; text-transform:uppercase; letter-spacing:.01em; }
+  header.top p { margin:0; color:#dbe6f5; max-width:760px }
+  .meta { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:16px; font-size:13px; color:#cfe0f7 }
+  .meta span::before { content:""; display:inline-block; width:12px; height:3px; background:var(--yellow); border-radius:2px; vertical-align:middle; margin-right:7px }
+  nav.toc { background:#fff; border-bottom:1px solid var(--gray-200); position:sticky; top:0; z-index:5 }
+  nav.toc .wrap { display:flex; gap:4px; overflow-x:auto; padding:10px 20px }
+  nav.toc a { flex:0 0 auto; color:var(--navy); text-decoration:none; font-weight:600; font-size:13px; padding:6px 12px; border-radius:999px }
+  nav.toc a:hover { background:var(--sky) }
+  section { margin:28px 0; background:#fff; border:1px solid var(--gray-200); border-radius:16px; padding:26px 28px; box-shadow:0 1px 3px rgba(11,37,69,.06) }
+  h2 { margin:0 0 4px; font:800 26px/1.15 "Barlow Condensed","Arial Narrow",Arial,sans-serif; text-transform:uppercase; color:var(--navy-900) }
+  h3 { margin:22px 0 8px; font-size:15px; color:var(--navy-900) }
+  .eyebrow { font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--blue); margin:0 0 4px }
+  .lead { color:var(--gray-600); margin:6px 0 0 }
+  .pill { display:inline-block; font-size:12px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; border-radius:999px; padding:3px 10px; vertical-align:middle }
+  .pass { background:var(--green-soft); color:var(--green) }
+  .fixed { background:#fff5d1; color:#7a5900 }
+  .head-row { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap }
+  .summary { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:16px }
+  .card { border:1px solid var(--gray-200); border-radius:12px; padding:14px 16px; background:var(--gray-50) }
+  .card .k { font-size:12px; color:var(--gray-600); font-weight:600 }
+  .card .v { font:800 22px/1.2 "Barlow Condensed","Arial Narrow",Arial,sans-serif; color:var(--navy-900); text-transform:uppercase; margin:2px 0 4px }
+  .card .d { font-size:13px; color:var(--gray-600) }
+  table { width:100%; border-collapse:collapse; margin:10px 0 4px; font-size:14px }
+  th,td { text-align:left; padding:9px 11px; border-bottom:1px solid var(--gray-200); vertical-align:top }
+  th { background:var(--sky); color:var(--navy-900); font-size:12px; letter-spacing:.04em; text-transform:uppercase }
+  td.ok { color:var(--green); font-weight:700; white-space:nowrap }
+  td.bad { color:var(--red); font-weight:700 }
+  code { font:12.5px Menlo,Consolas,monospace; background:var(--gray-100); padding:1px 5px; border-radius:5px }
+  ol, ul { margin:8px 0; padding-left:22px }
+  li { margin:3px 0 }
+  .quote { border-left:4px solid var(--yellow); background:var(--gray-50); padding:10px 14px; border-radius:0 10px 10px 0; margin:10px 0 }
+  .quote b { display:block; font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--gray-600); margin-bottom:2px }
+  .shots { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:14px }
+  figure.shot { margin:0; border:1px solid var(--gray-200); border-radius:12px; overflow:hidden; background:#fff }
+  figure.shot.wide { grid-column:1/-1 }
+  figure.shot .zoom img { display:block; width:100%; height:auto; cursor:zoom-in }
+  figcaption { border-top:1px solid var(--gray-200); padding:10px 13px 12px; font-size:13.5px; color:var(--gray-600); display:flex; flex-direction:column; gap:4px }
+  figcaption strong { color:var(--navy-900); font-size:14px }
+  figcaption code { align-self:flex-start; font-size:11.5px; margin-top:2px }
+  .lightbox { display:none; position:fixed; inset:0; background:rgba(11,37,69,.88); z-index:50; align-items:center; justify-content:center; padding:24px; cursor:zoom-out }
+  .lightbox:target { display:flex }
+  .lightbox img { max-width:100%; max-height:100%; border-radius:8px; box-shadow:0 20px 60px rgba(0,0,0,.5) }
+  .verdict { margin-top:16px; padding:12px 16px; border-radius:12px; background:var(--green-soft); color:var(--green); font-weight:600 }
+  .note { font-size:13px; color:var(--gray-600) }
+  footer { color:var(--gray-600); font-size:13px; text-align:center; padding:10px 0 40px }
+  @media (max-width:760px) { .summary { grid-template-columns:1fr 1fr } .shots { grid-template-columns:1fr } section { padding:20px } h1 { font-size:28px } }
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <div class="brand">
+    <svg width="38" height="38" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 2 L44 9 V24 C44 36 35 43 24 46 C13 43 4 36 4 24 V9 Z" fill="#0b2545" stroke="#fff" stroke-width="2.5"/><path d="M9 31 H39" stroke="#f2c230" stroke-width="3" stroke-linecap="round"/><text x="24" y="27" text-anchor="middle" font-family="Arial Narrow, Arial, sans-serif" font-weight="800" font-style="italic" font-size="19" fill="#fff">CC</text></svg>
+    <div><b>Campus Customs</b><small>Yale apparel · New Haven</small></div>
+  </div>
+  <h1>Application Verification Report</h1>
+  <p>Problem 11: evidence-based testing of the running Campus Customs website, its AI shopping assistant (Handsome Dan), and the Problem 9 usability improvements.</p>
+  <div class="meta">
+    <span>Run: October 11, 2026, 11:09 PM</span>
+    <span>Tested on the live local app (not mocked)</span>
+    <span>3 required tests: all passed</span>
+    <span>1 defect found and fixed</span>
+  </div>
+</div></header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#summary">Summary</a><a href="#setup">Setup</a><a href="#test1">Test 1 · Inventory &amp; price</a>
+  <a href="#test2">Test 2 · Dynamic cards</a><a href="#test3">Test 3 · Usability</a><a href="#defects">Defects</a><a href="#method">Method</a>
+</div></nav>
+
+<main class="wrap">
+
+<section id="summary">
+  <p class="eyebrow">Results at a glance</p>
+  <h2>Summary</h2>
+  <div class="summary">
+    <div class="card"><div class="k">Test 1</div><div class="v">Pass</div><div class="d">AI stock &amp; price matched the database exactly</div></div>
+    <div class="card"><div class="k">Test 2</div><div class="v">Pass</div><div class="d">27 hoodie cards appeared without reload; card opened the right page</div></div>
+    <div class="card"><div class="k">Test 3</div><div class="v">Pass</div><div class="d">Category filter, price sort, and no-match feedback work</div></div>
+    <div class="card"><div class="k">Defects</div><div class="v">1 fixed</div><div class="d">Wordmark wrapped on phones; fixed and re-verified</div></div>
+  </div>
+  <table>
+    <thead><tr><th>Test</th><th>What was verified</th><th>Evidence</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>1 · AI inventory &amp; price</td><td>Assistant reports Basic Hoodie Big Yale stock (total and by size) and price from the database</td><td>2 screenshots + field-by-field comparison</td><td class="ok">✓ Pass</td></tr>
+      <tr><td>2 · Dynamic search cards</td><td>"What hoodies do you have available?" fills the Products page with 27 clickable cards; card opens its detail page</td><td>2 screenshots + counts vs database</td><td class="ok">✓ Pass</td></tr>
+      <tr><td>3 · Problem 9 usability</td><td>Category filter + price sort with result count and no-match feedback; also mobile layout and suggested chat questions</td><td>6 screenshots</td><td class="ok">✓ Pass</td></tr>
+      <tr><td>Automated checks</td><td>Backend unit tests; TypeScript type-check and production build; lint</td><td>Command output (below)</td><td class="ok">✓ Pass</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="setup">
+  <p class="eyebrow">Step 1</p>
+  <h2>Launch and inspection</h2>
+  <p class="lead">All services were running from the project's own configuration before testing began.</p>
+  <table>
+    <thead><tr><th>Component</th><th>Details</th><th>Check</th></tr></thead>
+    <tbody>
+      <tr><td>Front end</td><td>React + Vite + TypeScript, <code>npm run dev</code> → <code>http://localhost:5180</code></td><td class="ok">✓ Loaded</td></tr>
+      <tr><td>Backend</td><td>FastAPI, run from <code>backend/</code> with <code>uvicorn main:app --reload --port 8000</code>; Vite proxies <code>/api</code> and <code>/images</code></td><td class="ok">✓ <code>/api/health</code> → <code>{"ok":true,"model":"gpt-6-luna"}</code></td></tr>
+      <tr><td>Database</td><td>SQLite <code>data/campus_customs.db</code>: 102 products, 612 inventory rows</td><td class="ok">✓ <code>/api/products</code> returned 102</td></tr>
+      <tr><td>AI agent</td><td>PydanticAI agent, model <code>gpt-6-luna</code> via Portkey; read-only tools <code>search_products</code>, <code>get_product_details</code>, <code>check_stock</code>, <code>similar_products</code> query the same database</td><td class="ok">✓ Answers matched DB (Tests 1–2)</td></tr>
+      <tr><td>Browser testing</td><td>Browser automation of the live site (clicks, typing, screenshots) at desktop 1280×900 and phone 375×812; tests run as a guest (logged out)</td><td class="ok">✓ Available</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="test1">
+  <div class="head-row"><div><p class="eyebrow">Step 2 · Test 1</p><h2>AI chat inventory and price accuracy</h2></div><span class="pill pass">Pass</span></div>
+  <p class="lead">Goal: the assistant retrieves real inventory and price from the database and doesn't invent anything.</p>
+  <h3>Procedure</h3>
+  <ol>
+    <li>Chose a real product with varied stock: <b>Basic Hoodie Big Yale</b> (<code>basic-hoodie-big-yale</code>) and read its record from the database first.</li>
+    <li>Opened its product page on the live site, opened Handsome Dan, and typed the question below.</li>
+    <li>Compared every number in the reply against the database.</li>
+  </ol>
+  <div class="quote"><b>Customer</b>How many of this hoodie do you have in stock, and what is the price?</div>
+  <div class="quote"><b>Handsome Dan (AI)</b>The Basic Hoodie Big Yale has 60 in stock total, and it's $68. Stock by size: XS 15, S 5, M 5, L 8, XL 2, and XXL 25.</div>
+  <h3>AI answer vs database</h3>
+  <table class="cmp"><thead><tr><th>Field</th><th>AI assistant said</th><th>Database record</th><th>Result</th></tr></thead><tbody><tr><td>Product identified</td><td>Basic Hoodie Big Yale ("this hoodie" = the open page)</td><td><code>basic-hoodie-big-yale</code>, Basic Hoodie Big Yale</td><td class="ok">✓ Match</td></tr><tr><td>Price</td><td>$68</td><td>68.0</td><td class="ok">✓ Match</td></tr><tr><td>Total in stock</td><td>60</td><td>SUM(quantity) = 60</td><td class="ok">✓ Match</td></tr><tr><td>XS / S / M</td><td>15 / 5 / 5</td><td>15 / 5 / 5</td><td class="ok">✓ Match</td></tr><tr><td>L / XL / XXL</td><td>8 / 2 / 25</td><td>8 / 2 / 25</td><td class="ok">✓ Match</td></tr></tbody></table>
+  <p class="note">No extra products, discounts, or quantities appeared in the reply. (The agent also has an automatic fact-check that rejects any price no tool returned; see Problem 9.)</p>
+  <div class="shots">
+    
+    <figure class="shot">
+      <a href="#test1_chat_stock_and_price-jpg" class="zoom" title="Click to enlarge">
+        <img src="app_check_images/test1_chat_stock_and_price.jpg" alt="Chat on the Basic Hoodie Big Yale page showing the question and the AI&#x27;s answer" loading="lazy">
+      </a>
+      <figcaption>
+        <strong>Live site: question and AI answer</strong>
+        <span>This shows the customer's question and Handsome Dan's reply on the Basic Hoodie Big Yale page: 60 in stock, $68, and the count for each size. It proves the assistant identified the product on the page and answered with specific stock and price figures.</span>
+        <code>app_check_images/test1_chat_stock_and_price.jpg</code>
+      </figcaption>
+      <a href="#close" class="lightbox" id="test1_chat_stock_and_price-jpg" aria-label="Close enlarged image">
+        <img src="app_check_images/test1_chat_stock_and_price.jpg" alt="Chat on the Basic Hoodie Big Yale page showing the question and the AI&#x27;s answer" loading="lazy">
+      </a>
+    </figure>
+    
+    <figure class="shot">
+      <a href="#test1_database_record-jpg" class="zoom" title="Click to enlarge">
+        <img src="app_check_images/test1_database_record.jpg" alt="sqlite3 query output for basic-hoodie-big-yale" loading="lazy">
+      </a>
+      <figcaption>
+        <strong>Database record for the same product</strong>
+        <span>This is the live <code>sqlite3</code> output for <code>basic-hoodie-big-yale</code>: price 68.0, sizes XS 15, S 5, M 5, L 8, XL 2, XXL 25, total 60. It proves every number in the AI's answer came from the database rather than being invented.</span>
+        <code>app_check_images/test1_database_record.jpg</code>
+      </figcaption>
+      <a href="#close" class="lightbox" id="test1_database_record-jpg" aria-label="Close enlarged image">
+        <img src="app_check_images/test1_database_record.jpg" alt="sqlite3 query output for basic-hoodie-big-yale" loading="lazy">
+      </a>
+    </figure>
+  </div>
+  <div class="verdict">✓ Pass: the assistant's product, price, total stock, and all six size counts exactly match the database.</div>
+</section>
+
+<section id="test2">
+  <div class="head-row"><div><p class="eyebrow">Step 3 · Test 2</p><h2>Dynamic search results and product cards</h2></div><span class="pill pass">Pass</span></div>
+  <p class="lead">Goal: a category question in chat fills the storefront with matching, clickable product cards, with no page refresh.</p>
+  <h3>Procedure</h3>
+  <ol>
+    <li>Opened the Home page and set a marker variable in the page's memory (<code>window.__noReloadMarker</code>).</li>
+    <li>Opened Handsome Dan and asked: <b>"What hoodies do you have available?"</b></li>
+    <li>Checked the page that appeared, then clicked the <b>Yale Sports Hoodie Tennis</b> card on it.</li>
+  </ol>
+  <div class="quote"><b>Handsome Dan (AI)</b>We have 27 hoodies in stock. Options start at $45, including the Ua Gameday Double Knit Hood and Yale Sports Hoodie Tennis; I've put all the hoodies on the page for you. Boola boola!</div>
+  <table>
+    <thead><tr><th>Check</th><th>Observed on the live site</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr><td>Catalogue searched</td><td>Page heading "Hoodies · 27 items for 'What hoodies do you have available?'"; database has 27 products whose type contains "hood"</td><td class="ok">✓</td></tr>
+      <tr><td>No page refresh</td><td>Moved from <code>/</code> to <code>/products</code> and the marker set before sending was still present afterward (a reload would have erased it)</td><td class="ok">✓</td></tr>
+      <tr><td>Cards complete</td><td>All 27 cards have an image, name, price, and short description; all labeled Hoodies</td><td class="ok">✓</td></tr>
+      <tr><td>Card clickable</td><td>Clicked card <code>href="/products/yale-sports-hoodie-tennis"</code> → opened <code>/products/yale-sports-hoodie-tennis</code></td><td class="ok">✓</td></tr>
+      <tr><td>Detail page correct</td><td>Large image, "Yale Sports Hoodie Tennis", $45.00, full description, colors, sizes XS 8 · S 8 · M 25 · L 12 · XL 12 · XXL 2 (total 67); database: $45.0, total 67</td><td class="ok">✓</td></tr>
+    </tbody>
+  </table>
+  <div class="shots">
+    
+    <figure class="shot">
+      <a href="#test2_chat_hoodie_results-jpg" class="zoom" title="Click to enlarge">
+        <img src="app_check_images/test2_chat_hoodie_results.jpg" alt="Products page filled with hoodie cards next to the chat" loading="lazy">
+      </a>
+      <figcaption>
+        <strong>Chat search filled the storefront</strong>
+        <span>After asking "What hoodies do you have available?", the Products page shows "Hoodies · 27 items" as cards with images, names, prices, and descriptions, next to the chat. It proves a chat question updates the website with matching products without a page refresh.</span>
+        <code>app_check_images/test2_chat_hoodie_results.jpg</code>
+      </figcaption>
+      <a href="#close" class="lightbox" id="test2_chat_hoodie_results-jpg" aria-label="Close enlarged image">
+        <img src="app_check_images/test2_chat_hoodie_results.jpg" alt="Products page filled with hoodie cards next to the chat" loading="lazy">
+      </a>
+    </figure>
+    
+    <figure class="shot">
+      <a href="#test2_product_detail_page-jpg" class="zoom" title="Click to enlarge">
+        <img src="app_check_images/test2_product_detail_page.jpg" alt="Yale Sports Hoodie Tennis product page" loading="lazy">
+      </a>
+      <figcaption>
+        <strong>Card opened the correct product page</strong>
+        <span>Clicking the Yale Sports Hoodie Tennis card opened its single-item page with the large image, $45.00, description, colors, and stock for each size. It proves the cards generated by the chat are clickable and lead to the right product (price and 67 in stock match the database).</span>
+        <code>app_check_images/test2_product_detail_page.jpg</code>
+      </figcaption>
+      <a href="#close" class="lightbox" id="test2_product_detail_page-jpg" aria-label="Close enlarged image">
+        <img src="app_check_images/test2_product_detail_page.jpg" alt="Yale Sports Hoodie Tennis product page" loading="lazy">
+      </a>
+    </figure>
+  </div>
+  <div class="verdict">✓ Pass: the chat search updated the storefront dynamically, and the generated cards open the correct product pages.</div>
+</section>
+
+<section id="test3">
+  <div class="head-row"><div><p class="eyebrow">Step 4 · Test 3</p><h2>Problem 9 usability improvement</h2></div><span class="pill pass">Pass</span></div>
+  <p class="lead">Feature tested: <b>product category filtering and sorting</b> (Problem 9, Front-end Improvement 1), including the feedback the shopper sees. Two more Problem 9 features are shown as supporting evidence: the phone layout and suggested chat questions.</p>
+  <h3>Procedure</h3>
+  <ol>
+    <li><b>Before:</b> opened Products: "Showing 102 of 102", "All" selected, sort "Featured", mixed categories and prices.</li>
+    <li>Clicked the <b>Hoodies</b> category chip, then chose <b>Sort by: Price: low to high</b>.</li>
+    <li>Read every card on the page to confirm the category and order, then scrolled to the end of the list.</li>
+    <li>Typed "sneakers" in the search box to check the no-match feedback.</li>
+  </ol>
+  <table>
+    <thead><tr><th>Check</th><th>Observed</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr><td>Products change with the category</td><td>"Showing 27 of 102 products"; all 27 cards labeled Hoodies; Hoodies chip highlighted with its count</td><td class="ok">✓</td></tr>
+      <tr><td>Correct sort order</td><td>Prices in order: $45, $45, then 23 × $68, then $88, $88 (checked all 27)</td><td class="ok">✓</td></tr>
+      <tr><td>Filters kept in the URL</td><td><code>/products?cat=Hoodies&amp;sort=price_low</code> (shareable; Back returns here)</td><td class="ok">✓</td></tr>
+      <tr><td>Useful feedback</td><td>Result count; for "sneakers": "No products match 'sneakers'", tip, <b>Search all categories</b> and <b>Clear filters</b> buttons</td><td class="ok">✓</td></tr>
+      <tr><td>Phone layout (supporting)</td><td>375px: 2-column grid, filters and sort usable, no horizontal scrolling</td><td class="ok">✓</td></tr>
+      <tr><td>Suggested chat questions (supporting)</td><td>Full-screen phone chat shows "Show me hoodies", "What products are available?", "Help me find a gift", "Anything under $40?"</td><td class="ok">✓</td></tr>
+    </tbody>
+  </table>
+  <div class="shots">
+    
+    <figure class="shot">
+      <a href="#test3_before_all_products-jpg" class="zoom" title="Click to enlarge">
+        <img src="app_check_images/test3_before_all_products.jpg" alt="Products page before filtering" loading="lazy">
+      </a>
+      <figcaption>
+        <strong>Before: the full catalogue</strong>
+        <span>The Products page with no filter: "Showing 102 of 102 products", sort "Featured", mixed categories and prices. This is the starting point the filter and sort are compared against.</span>
+        <code>app_check_images/test3_before_all_products.jpg</code>
+      </figcaption>
+      <a href="#close" class="lightbox" id="test3_before_all_products-jpg" aria-label="Close enlarged image">
+        <img src="app_check_images/test3_before_all_products.jpg" alt="Products page before filtering" loading="lazy">
+      </a>
+    </figure>
+    
+    <figure class="shot">
+      <a href="#test3_after_hoodies_price_low_to_high-jpg" class="zoom" title="Click to enlarge">
+        <img src="app_check_images/test3_after_hoodies_price_low_to_high.jpg" alt="Hoodies filtered and sorted by price" loading="lazy">
+      </a>
+      <figcaption>
+        <strong>After: Hoodies, price low to high</strong>
+        <span>With the Hoodies chip and "Price: low to high" selected, the page reads "Showing 27 of 102 products" and starts with the two $45 hoodies. It proves the category filter narrows the products and the sort puts the cheapest first.</span>
+        <code>app_check_images/test3_after_hoodies_price_low_to_high.jpg</code>
+      </figcaption>
+      <a href="#close" class="lightbox" id="test3_after_hoodies_price_low_to_high-jpg" aria-label="Close enlarged image">
+        <img src="app_check_images/test3_after_hoodies_price_low_to_high.jpg" alt="Hoodies filtered and sorted by price" loading="lazy">
+      </a>
+    </figure>
+    
+    <figure class="shot">
+      <a href="#test3_after_end_of_list-jpg" class="zoom" title="Click to enlarge">
+        <img src="app_check_images/test3_after_end_of_list.jpg" alt="End of the sorted hoodie list" loading="lazy">
+      </a>
+      <figcaption>
+        <strong>After: end of the same list</strong>
+        <span>Scrolling to the end of the sorted list shows the $68 hoodies followed by the two $88 hoodies. It proves the whole list is in ascending price order, not just the first row.</span>
+        <code>app_check_images/test3_after_end_of_list.jpg</code>
+      </figcaption>
+      <a href="#close" class="lightbox" id="test3_after_end_of_list-jpg" aria-label="Close enlarged image">
+        <img src="app_check_images/test3_after_end_of_list.jpg" alt="End of the sorted hoodie list" loading="lazy">
+      </a>
+    </figure>
+    
+    <figure class="shot">
+      <a href="#test3_no_match_feedback-jpg" class="zoom" title="Click to enlarge">
+        <img src="app_check_images/test3_no_match_feedback.jpg" alt="No products match sneakers message" loading="lazy">
+      </a>
+      <figcaption>
+        <strong>Helpful feedback when nothing matches</strong>
+        <span>Searching "sneakers" in Hoodies shows "No products match" with a tip and Search all categories / Clear filters buttons. It proves the page explains an empty result and offers a way forward instead of a blank screen.</span>
+        <code>app_check_images/test3_no_match_feedback.jpg</code>
+      </figcaption>
+      <a href="#close" class="lightbox" id="test3_no_match_feedback-jpg" aria-label="Close enlarged image">
+        <img src="app_check_images/test3_no_match_feedback.jpg" alt="No products match sneakers message" loading="lazy">
+      </a>
+    </figure>
+    
+    <figure class="shot">
+      <a href="#test3_mobile_products-jpg" class="zoom" title="Click to enlarge">
+        <img src="app_check_images/test3_mobile_products.jpg" alt="Products page on a phone" loading="lazy">
+      </a>
+      <figcaption>
+        <strong>Phone layout (supporting evidence)</strong>
+        <span>The same filtered and sorted view at phone width (375px), in two columns with the filters and sort still usable. It shows the Problem 9 shopping improvements also work on mobile.</span>
+        <code>app_check_images/test3_mobile_products.jpg</code>
+      </figcaption>
+      <a href="#close" class="lightbox" id="test3_mobile_products-jpg" aria-label="Close enlarged image">
+        <img src="app_check_images/test3_mobile_products.jpg" alt="Products page on a phone" loading="lazy">
+      </a>
+    </figure>
+    
+    <figure class="shot">
+      <a href="#test3_mobile_chat_suggestions-jpg" class="zoom" title="Click to enlarge">
+        <img src="app_check_images/test3_mobile_chat_suggestions.jpg" alt="Chat suggestions on a phone" loading="lazy">
+      </a>
+      <figcaption>
+        <strong>Suggested chat questions (supporting evidence)</strong>
+        <span>The chat opens full screen on a phone with four clickable suggested questions under the welcome message. It shows another Problem 9 improvement, which helps shoppers start a conversation.</span>
+        <code>app_check_images/test3_mobile_chat_suggestions.jpg</code>
+      </figcaption>
+      <a href="#close" class="lightbox" id="test3_mobile_chat_suggestions-jpg" aria-label="Close enlarged image">
+        <img src="app_check_images/test3_mobile_chat_suggestions.jpg" alt="Chat suggestions on a phone" loading="lazy">
+      </a>
+    </figure>
+  </div>
+  <div class="verdict">✓ Pass: filtering and sorting change the products correctly and tell the shopper what they're seeing.</div>
+</section>
+
+<section id="defects">
+  <p class="eyebrow">Defects</p>
+  <h2>Found and corrected during testing</h2>
+  <table>
+    <thead><tr><th>#</th><th>Defect</th><th>Fix</th><th>Re-test</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>On phones while logged out, the "CAMPUS CUSTOMS" wordmark wrapped onto two lines, squeezed by the Log in / Create account buttons (cosmetic)</td><td><code>frontend/src/index.css</code>: wordmark set to one line, slightly smaller logo, wordmark, and Create account button on phones</td><td class="ok">✓ Wordmark on one line (18px tall); no nav links off-screen; no horizontal scrolling</td></tr>
+    </tbody>
+  </table>
+  <p class="note">No functional defects were found in the three required tests: every answer and count matched the database, and every card and link worked.</p>
+  <div class="shots">
+    
+    <figure class="shot">
+      <a href="#defect_mobile_wordmark_before_fix-jpg" class="zoom" title="Click to enlarge">
+        <img src="app_check_images/defect_mobile_wordmark_before_fix.jpg" alt="Phone nav before the fix, wordmark on two lines" loading="lazy">
+      </a>
+      <figcaption>
+        <strong>Before the fix</strong>
+        <span>The "CAMPUS CUSTOMS" wordmark wraps onto two lines on a phone when logged out. This is the defect as found during testing.</span>
+        <code>app_check_images/defect_mobile_wordmark_before_fix.jpg</code>
+      </figcaption>
+      <a href="#close" class="lightbox" id="defect_mobile_wordmark_before_fix-jpg" aria-label="Close enlarged image">
+        <img src="app_check_images/defect_mobile_wordmark_before_fix.jpg" alt="Phone nav before the fix, wordmark on two lines" loading="lazy">
+      </a>
+    </figure>
+    
+    <figure class="shot">
+      <a href="#test3_mobile_products-jpg" class="zoom" title="Click to enlarge">
+        <img src="app_check_images/test3_mobile_products.jpg" alt="Phone nav after the fix" loading="lazy">
+      </a>
+      <figcaption>
+        <strong>After the fix</strong>
+        <span>The same screen after the CSS fix: the wordmark fits on one line and every nav link is on screen. It proves the defect was corrected.</span>
+        <code>app_check_images/test3_mobile_products.jpg</code>
+      </figcaption>
+      <a href="#close" class="lightbox" id="test3_mobile_products-jpg" aria-label="Close enlarged image">
+        <img src="app_check_images/test3_mobile_products.jpg" alt="Phone nav after the fix" loading="lazy">
+      </a>
+    </figure>
+  </div>
+</section>
+
+<section id="method">
+  <p class="eyebrow">How this report was produced</p>
+  <h2>Method and authenticity</h2>
+  <ul>
+    <li>Every screenshot was captured by browser automation from the <b>running</b> application during this test run; none are mock-ups. They are browser-viewport captures, downscaled by the capture tool; click any image to enlarge it. Each image loads from <code>app_check_images/</code> next to this file, so keep the folder with the report.</li>
+    <li>The database screenshot shows raw output of <code>sqlite3 data/campus_customs.db</code> queries run at test time, displayed in the browser so it could be captured. The temporary file was deleted afterward.</li>
+    <li>Database values in the tables above were read directly with SQL, not copied from the website.</li>
+    <li>Tests ran as a guest so no customer's saved chat appears in the screenshots.</li>
+  </ul>
+  <h3>Automated checks run with this report</h3>
+  <table>
+    <thead><tr><th>Command</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr><td><code>cd backend &amp;&amp; .venv/bin/python -m unittest discover tests</code></td><td class="ok">31 tests passed</td></tr>
+      <tr><td><code>cd frontend &amp;&amp; npm run build</code> (TypeScript check + production build)</td><td class="ok">Built successfully</td></tr>
+      <tr><td><code>cd frontend &amp;&amp; npx oxlint src</code></td><td class="ok">0 errors</td></tr>
+    </tbody>
+  </table>
+  <h3>Reproduce</h3>
+  <ol>
+    <li><code>cd backend &amp;&amp; source .venv/bin/activate &amp;&amp; uvicorn main:app --reload --port 8000</code></li>
+    <li><code>cd frontend &amp;&amp; npm run dev</code>, then open <code>http://localhost:5180</code></li>
+    <li>Follow each test's procedure above.</li>
+  </ol>
+</section>
+
+</main>
+<footer>Campus Customs · 57 Broadway, New Haven, CT · Application Verification Report · October 11, 2026, 11:09 PM</footer>
+</body>
+</html>

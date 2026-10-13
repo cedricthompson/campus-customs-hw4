@@ -1,0 +1,3 @@
+# Repository root: the project lives in hw4/ (see hw4/.gitignore)
+.claude/
+.DS_Store

@@ -1,0 +1,39 @@
+# Homework 4 — Campus Customs
+# Course data: never commit the database or product images
+data/
+*.db
+*.sqlite
+*.sqlite3
+products/
+
+# Secrets (Portkey key, etc.)
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node / Vite
+node_modules/
+dist/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Audit trail working files (the trail itself, output/audit_trail.json, IS committed)
+output/audit_trail.lock
+output/*.json.tmp
+
+# Caches, logs, and local tool settings
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+*.log
+*.tsbuildinfo
+.claude/
