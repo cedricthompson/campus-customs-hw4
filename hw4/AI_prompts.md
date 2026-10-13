@@ -1,6 +1,5 @@
 # AI Prompts Log — Homework 4: Campus Customs
 
-
 ## Problem 1: Vibe coder prompts
 
 **Prompt:**
